@@ -1,4 +1,4 @@
-# simple:rest-accounts-bearer-token
+# itgenio:rest-accounts-bearer-token
 
 SimpleRest middleware for parsing a standard bearer token from an HTTP request
 

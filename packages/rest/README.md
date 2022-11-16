@@ -1,7 +1,7 @@
 ## One-step JSON API for your publications and methods
 
 ```sh
-meteor add simple:rest
+meteor add itgenio:rest
 ```
 
 Add this package to get an automatic JSON HTTP API for all of your Meteor app's publications and methods. It works with all of your existing security rules and authentication. This can be useful for many things:
@@ -111,7 +111,7 @@ Meteor.methods({
 #### Available options
 
 - `url`: Define a custom URL for this method.
-- `getArgsFromRequest`: A function that accepts a [Node `request` object](https://nodejs.org/api/http.html#http_http_incomingmessage) and returns an array which will be passed as arguments to your method. If this option is not passed, `simple:rest` expects that the request body is a JSON array that maps to the method arguments, or a single JSON object that is passed as the only argument to the method.
+- `getArgsFromRequest`: A function that accepts a [Node `request` object](https://nodejs.org/api/http.html#http_http_incomingmessage) and returns an array which will be passed as arguments to your method. If this option is not passed, `itgenio:rest` expects that the request body is a JSON array that maps to the method arguments, or a single JSON object that is passed as the only argument to the method.
 - `httpMethod`: Set the HTTP method which must be used when calling this API endpoint. The default is `"post"`.
 
 ```js
@@ -191,7 +191,7 @@ SimpleRest.configure({
 
 ### Using ObjectIDs
 
-If any of your collections use ObjectIDs instead of string IDs, tell simple:rest about them and everything will work fine:
+If any of your collections use ObjectIDs instead of string IDs, tell itgenio:rest about them and everything will work fine:
 
 ```js
 SimpleRest.configure({
@@ -296,7 +296,7 @@ You can set `error.statusCode` before you throw the error if you want a particul
 
 ### Cross-origin requests
 
-If you would like to use your API from the client side of a different app, you need to return a special header. You can do this by hooking into a method on the `simple:json-routes` package, like so:
+If you would like to use your API from the client side of a different app, you need to return a special header. You can do this by hooking into a method on the `itgenio:json-routes` package, like so:
 
 ```js
 // Enable cross origin requests for all endpoints
@@ -310,6 +310,10 @@ JsonRoutes.setResponseHeaders({
 ```
 
 ## Change Log
+
+#### 1.1.1
+
+- Make compatible with Meteor 2.3.
 
 #### 1.1.0
 

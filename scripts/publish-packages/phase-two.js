@@ -36,7 +36,7 @@ without the --finish option?
 
     // First, publish the packages
     publishOrder.forEach((dirName) => {
-      if (! _.has(packageVersions, 'simple:' + dirName)) {
+      if (! _.has(packageVersions, 'itgenio:' + dirName)) {
         // Only publish the package if it is in packageVersions
         return;
       }

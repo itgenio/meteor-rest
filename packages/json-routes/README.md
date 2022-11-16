@@ -1,6 +1,6 @@
-# simple:json-routes
+# itgenio:json-routes
 
-<https://atmospherejs.com/simple/json-routes>
+<https://atmospherejs.com/itgenio/json-routes>
 
 The simplest bare-bones way to define server-side JSON API endpoints, without
 any extra functionality. Based on [connect-route].
@@ -110,10 +110,18 @@ Alternatively, you could publish a pure NodeJS middleware package to NPM, and yo
 
 ### Auth Middleware
 
-- By convention, any middleware you create that parses the request to find an authentication token should then save that token on `req.authToken`. See `simple:rest-bearer-token-parser` for an example.
-- By convention, any middleware you create that determines a user ID should save that ID on `req.userId`. See `simple:authenticate-user-by-token` for an example.
+- By convention, any middleware you create that parses the request to find an authentication token should then save that token on `req.authToken`. See `itgenio:rest-bearer-token-parser` for an example.
+- By convention, any middleware you create that determines a user ID should save that ID on `req.userId`. See `itgenio:authenticate-user-by-token` for an example.
 
 ## Change Log
+
+#### 2.1.2
+
+- Fix versions
+
+#### 2.1.1
+
+- Make compatible with Meteor 2.3.
 
 #### 2.1.0
 

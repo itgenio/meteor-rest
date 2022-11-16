@@ -1,8 +1,9 @@
 /* global JsonRoutes:true */
+//TODO remove using of underscore
 
-var Fiber = Npm.require('fibers');
-var connect = Npm.require('connect');
-var connectRoute = Npm.require('connect-route');
+const Fiber = Npm.require('fibers');
+const connect = Npm.require('connect');
+const connectRoute = Npm.require('connect-route');
 
 JsonRoutes = {};
 

@@ -1,0 +1,23 @@
+{
+  "name": "@itgenio/meteor-rest",
+  "version": "1.0.0",
+  "description": "Up-to-date fork of stubailo/meteor-rest",
+  "main": "index.js",
+  "scripts": {
+    "test": "meteor test-packages ./packages/json-routes"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/itgenio/meteor-rest.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/itgenio/meteor-rest/issues"
+  },
+  "homepage": "https://github.com/itgenio/meteor-rest#readme",
+  "private": true,
+  "devDependencies": {
+    "@types/meteor": "^2.8.1"
+  }
+}

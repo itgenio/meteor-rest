@@ -64,7 +64,7 @@ the --finish option?
 
       return _.compact(grepOutput.split("\n"))
         .map(line => line.split("/")[1])
-        .map(dirName => 'simple:' + dirName);
+        .map(dirName => 'itgenio:' + dirName);
     }));
 
     const packagesToRepublish = _.union(packagesThatDependOnChanged,
