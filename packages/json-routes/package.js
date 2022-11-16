@@ -1,12 +1,12 @@
 Package.describe({
   name: 'itgenio:json-routes',
-  version: '2.1.2',
+  version: '2.2.0',
 
   // Brief, one-line summary of the package.
   summary: 'The simplest way to define server-side routes that return JSON',
 
   // URL to the Git repository containing the source code for this package.
-  git: 'https://github.com/itgenio/meteor-rest',
+  git: 'https://github.com/itgenio/meteor-rest/tree/master/packages/json-routes',
 
   // By default, Meteor will default to using README.md for documentation.
   // To avoid submitting documentation, set this field to null.
@@ -14,8 +14,10 @@ Package.describe({
 });
 
 Npm.depends({
-  connect: '2.30.2',
+  'body-parser': '1.19.0',
+  'connect': '3.7.0',
   'connect-route': '0.1.5',
+  'connect-query': '1.0.0',
 });
 
 Package.onUse(function (api) {

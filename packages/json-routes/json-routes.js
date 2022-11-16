@@ -4,12 +4,14 @@
 const Fiber = Npm.require('fibers');
 const connect = Npm.require('connect');
 const connectRoute = Npm.require('connect-route');
+const bodyParser = Npm.require('body-parser');
+const query = Npm.require('connect-query');
 
 JsonRoutes = {};
 
-WebApp.connectHandlers.use(connect.urlencoded({limit: '50mb'})); //Override default request size
-WebApp.connectHandlers.use(connect.json({limit: '50mb'})); //Override default request size
-WebApp.connectHandlers.use(connect.query());
+WebApp.connectHandlers.use(bodyParser.urlencoded({limit: '50mb',extended:false})); //Override default request size
+WebApp.connectHandlers.use(bodyParser.json({limit: '50mb'})); //Override default request size
+WebApp.connectHandlers.use(query());
 
 // Handler for adding middleware before an endpoint (JsonRoutes.middleWare
 // is just for legacy reasons). Also serves as a namespace for middleware
@@ -69,6 +71,7 @@ JsonRoutes.add = function (method, path, handler) {
     path: path,
   });
 
+  //TODO async handlers?
   connectRouter[method.toLowerCase()](path, function (req, res, next) {
     // Set headers on response
     setHeaders(res, responseHeaders);
@@ -108,7 +111,9 @@ JsonRoutes.sendResult = function (res, options) {
 
   // We've already set global headers on response, but if they
   // pass in more here, we set those.
-  if (options.headers) setHeaders(res, options.headers);
+  if (options.headers) {
+    setHeaders(res, options.headers);
+  }
 
   // Set status code on response
   res.statusCode = options.code || 200;
@@ -128,8 +133,8 @@ function setHeaders(res, headers) {
 
 function writeJsonToBody(res, json) {
   if (json !== undefined) {
-    var shouldPrettyPrint = (process.env.NODE_ENV === 'development');
-    var spacer = shouldPrettyPrint ? 2 : null;
+    const shouldPrettyPrint = (process.env.NODE_ENV === 'development');
+    const spacer = shouldPrettyPrint ? 2 : null;
     res.setHeader('Content-type', 'application/json');
     res.write(JSON.stringify(json, null, spacer));
   }
