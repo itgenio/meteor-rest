@@ -1,7 +1,6 @@
 /* global JsonRoutes:true */
 //TODO remove using of underscore
 
-const Fiber = Npm.require('fibers');
 const connect = Npm.require('connect');
 const connectRoute = Npm.require('connect-route');
 const bodyParser = Npm.require('body-parser');
@@ -71,17 +70,14 @@ JsonRoutes.add = function (method, path, handler) {
     path: path,
   });
 
-  //TODO async handlers?
-  connectRouter[method.toLowerCase()](path, function (req, res, next) {
+  connectRouter[method.toLowerCase()](path, async function (req, res, next) {
     // Set headers on response
     setHeaders(res, responseHeaders);
-    Fiber(function () {
-      try {
-        handler(req, res, next);
-      } catch (error) {
-        next(error);
-      }
-    }).run();
+    try {
+      await handler(req, res, next);
+    } catch (error) {
+      next(error);
+    }
   });
 };
 

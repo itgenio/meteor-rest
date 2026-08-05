@@ -18,6 +18,6 @@
   "homepage": "https://github.com/itgenio/meteor-rest#readme",
   "private": true,
   "devDependencies": {
-    "@types/meteor": "^2.8.1"
+    "@types/meteor": "^2.9.2"
   }
 }

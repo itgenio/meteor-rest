@@ -1,6 +1,6 @@
 Package.describe({
   name: 'simple:rest-method-mixin',
-  version: '1.0.1',
+  version: '1.0.2',
   // Brief, one-line summary of the package.
   summary: 'Mixin for simple:rest with ValidatedMethod',
   // URL to the Git repository containing the source code for this package.
@@ -11,9 +11,9 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.2.1');
+  api.versionsFrom('3.5');
   api.use('ecmascript');
-  api.use('simple:rest@1.1.1');
+  api.use('simple:rest@1.1.2');
   api.addFiles('rest-method-mixin.js');
   api.export('RestMethodMixin');
 });

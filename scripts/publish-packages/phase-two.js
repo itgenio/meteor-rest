@@ -1,4 +1,3 @@
-var Sync = require("sync");
 var fs = require("fs");
 var _ = require("underscore");
 
@@ -6,8 +5,7 @@ var promptSync = require("./prompt-sync");
 var execSync = require("./exec-sync");
 const { goToRootAndCheckBranch, goToRoot } = require("./utils");
 
-// Run in a fiber, so that we can use synchronous APIs
-Sync(function () {
+(() => {
   try {
     goToRootAndCheckBranch();
 
@@ -92,4 +90,4 @@ ${listOfVersions}`;
     console.log(err.stack);
     process.exit(1);
   }
-});
+})();

@@ -1,6 +1,6 @@
 Package.describe({
   name: 'simple:rest',
-  version: '1.1.1',
+  version: '1.1.2',
 
   // Brief, one-line summary of the package.
   summary: 'The easiest way to add a REST API to your Meteor app',
@@ -14,7 +14,7 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
-  api.versionsFrom('1.1.0.2');
+  api.versionsFrom('3.5');
 
   api.use([
     'check',
@@ -22,7 +22,7 @@ Package.onUse(function (api) {
     'ejson',
     'meteor',
     'mongo',
-    'simple:json-routes@2.1.0',
+    'itgenio:json-routes@2.3.0',
     'underscore',
     'webapp',
   ], 'server');
@@ -48,7 +48,7 @@ Package.onTest(function (api) {
     'jquery',
     'mongo',
     'random',
-    'simple:json-routes',
+    'itgenio:json-routes',
     'simple:rest',
     'simple:rest-accounts-password',
     'simple:rest-json-error-handler',
