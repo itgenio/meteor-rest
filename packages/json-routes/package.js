@@ -25,7 +25,7 @@ Package.onUse(function (api) {
 
   api.use([
     'ecmascript',
-    'underscore',
+    'underscore@1.6.4',
     'webapp',
   ], 'server');
 
