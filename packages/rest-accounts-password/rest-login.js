@@ -9,7 +9,7 @@ JsonRoutes.add('options', '/users/login', function (req, res) {
   JsonRoutes.sendResult(res);
 });
 
-JsonRoutes.add('post', '/users/login', function (req, res) {
+JsonRoutes.add('post', '/users/login', async function (req, res) {
   var options = req.body;
 
   var user;
@@ -18,13 +18,13 @@ JsonRoutes.add('post', '/users/login', function (req, res) {
       email: String,
       password: String,
     });
-    user = Meteor.users.findOne({ 'emails.address': options.email });
+    user = await Meteor.users.findOneAsync({ 'emails.address': options.email });
   } else {
     check(options, {
       username: String,
       password: String,
     });
-    user = Meteor.users.findOne({ username: options.username });
+    user = await Meteor.users.findOneAsync({ username: options.username });
   }
 
   if (!user) {
@@ -32,7 +32,7 @@ JsonRoutes.add('post', '/users/login', function (req, res) {
       'User with that username or email address not found.');
   }
 
-  var result = Accounts._checkPassword(user, options.password);
+  var result = await Accounts._checkPasswordAsync(user, options.password);
   check(result, {
     userId: String,
     error: Match.Optional(Meteor.Error),
@@ -48,7 +48,7 @@ JsonRoutes.add('post', '/users/login', function (req, res) {
     when: Date,
   });
 
-  Accounts._insertLoginToken(result.userId, stampedLoginToken);
+  await Accounts._insertLoginToken(result.userId, stampedLoginToken);
 
   var tokenExpiration = Accounts._tokenExpiration(stampedLoginToken.when);
   check(tokenExpiration, Date);
@@ -67,7 +67,7 @@ JsonRoutes.add('options', '/users/register', function (req, res) {
   JsonRoutes.sendResult(res);
 });
 
-JsonRoutes.add('post', '/users/register', function (req, res) {
+JsonRoutes.add('post', '/users/register', async function (req, res) {
   var options = req.body;
 
   check(options, {
@@ -76,7 +76,7 @@ JsonRoutes.add('post', '/users/register', function (req, res) {
     password: String,
   });
 
-  var userId = Accounts.createUser(
+  var userId = await Accounts.createUserAsync(
     _.pick(options, 'username', 'email', 'password'));
 
   // Log in the new user and send back a token
@@ -87,7 +87,7 @@ JsonRoutes.add('post', '/users/register', function (req, res) {
   });
 
   // This adds the token to the user
-  Accounts._insertLoginToken(userId, stampedLoginToken);
+  await Accounts._insertLoginToken(userId, stampedLoginToken);
 
   var tokenExpiration = Accounts._tokenExpiration(stampedLoginToken.when);
   check(tokenExpiration, Date);

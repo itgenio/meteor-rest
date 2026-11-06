@@ -115,6 +115,12 @@ Alternatively, you could publish a pure NodeJS middleware package to NPM, and yo
 
 ## Change Log
 
+#### 2.3.1
+
+- Update body-parser to 2.3.0 so requests parsed by upstream body-parser 2.x middleware are not read twice.
+- Preserve an empty object in request.body for requests without a parsed body.
+- Add parser compatibility regression tests: `node --test packages/json-routes/parser-compatibility-tests.cjs` (after building the package with Meteor).
+
 #### 2.1.2
 
 - Fix versions

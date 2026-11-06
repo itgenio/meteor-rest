@@ -1,6 +1,6 @@
 Package.describe({
   name: 'itgenio:authenticate-user-by-token',
-  version: '1.0.2',
+  version: '1.0.3',
 
   // Brief, one-line summary of the package.
   summary: 'Authenticate user via auth token',
@@ -14,11 +14,11 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
-  api.versionsFrom(['1.0', '2.3']);
+  api.versionsFrom('3.5');
 
   api.use([
     'accounts-base',
-    'itgenio:json-routes@2.1.2',
+    'itgenio:json-routes@2.3.0',
   ], 'server');
 
   api.addFiles('auth.js', 'server');

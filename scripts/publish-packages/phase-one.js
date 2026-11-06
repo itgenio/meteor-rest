@@ -1,4 +1,3 @@
-const Sync = require("sync");
 const fs = require("fs");
 const _ = require("underscore");
 
@@ -6,8 +5,7 @@ const promptSync = require("./prompt-sync");
 const execSync = require("./exec-sync");
 const { goToRootAndCheckBranch } = require("./utils");
 
-// Run in a fiber, so that we can use synchronous APIs
-Sync(function () {
+(() => {
   try {
     goToRootAndCheckBranch();
 
@@ -157,7 +155,7 @@ files to reflect the new versions you selected. Now you should:
     console.log(err.stack);
     process.exit(1);
   }
-});
+})();
 
 
 function dir(pkgName) {

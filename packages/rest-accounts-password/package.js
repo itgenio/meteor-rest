@@ -1,6 +1,6 @@
 Package.describe({
   name: 'simple:rest-accounts-password',
-  version: '1.1.2',
+  version: '1.1.3',
 
   // Brief, one-line summary of the package.
   summary: 'Get a login token to use with simple:rest',
@@ -14,14 +14,15 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
-  api.versionsFrom('1.1.0.2');
+  api.versionsFrom('3.5');
 
   api.use([
     'accounts-password',
     'check',
-    'simple:json-routes@2.1.0',
-    'simple:authenticate-user-by-token@1.0.1',
-    'simple:rest-bearer-token-parser@1.0.1',
+    'ecmascript',
+    'itgenio:json-routes@2.3.0',
+    'itgenio:authenticate-user-by-token@1.0.3',
+    'itgenio:rest-bearer-token-parser@1.2.0',
     'simple:rest-json-error-handler@1.0.1',
     'underscore',
   ], 'server');
@@ -35,8 +36,8 @@ Package.onTest(function (api) {
     'check',
     'http',
     'simple:rest-accounts-password',
-    'simple:authenticate-user-by-token',
-    'simple:json-routes',
+    'itgenio:authenticate-user-by-token',
+    'itgenio:json-routes',
     'test-helpers',
     'tinytest',
   ]);

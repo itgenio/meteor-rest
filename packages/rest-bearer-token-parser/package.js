@@ -1,6 +1,6 @@
 Package.describe({
   name: 'itgenio:rest-bearer-token-parser',
-  version: '1.1.0',
+  version: '1.2.0',
 
   // Brief, one-line summary of the package.
   summary: 'Parse standard bearer token via request headers, query params ' +
@@ -15,8 +15,8 @@ Package.describe({
 });
 
 Package.onUse(function (api) {
-  api.versionsFrom(['1.0', '2.3']);
-  api.use('itgenio:json-routes@2.2.0');
+  api.versionsFrom('3.5');
+  api.use('itgenio:json-routes@2.3.0');
   api.addFiles('bearer_token_parser.js', 'server');
 });
 
@@ -25,6 +25,6 @@ Package.onTest(function (api) {
   api.use('tinytest');
   api.use('test-helpers');
   api.use('http');
-  api.use('itgenio:json-routes@2.2.0');
+  api.use('itgenio:json-routes@2.3.0');
   api.addFiles('bearer_token_parser_tests.js');
 });
