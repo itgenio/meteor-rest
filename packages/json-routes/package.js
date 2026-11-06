@@ -1,6 +1,6 @@
 Package.describe({
   name: 'itgenio:json-routes',
-  version: '2.3.0',
+  version: '2.3.1',
 
   // Brief, one-line summary of the package.
   summary: 'The simplest way to define server-side routes that return JSON',
@@ -14,7 +14,7 @@ Package.describe({
 });
 
 Npm.depends({
-  'body-parser': '1.20.3',
+  'body-parser': '2.3.0',
   'connect': '3.7.0',
   'connect-route': '0.1.5',
   'connect-query': '1.0.0',

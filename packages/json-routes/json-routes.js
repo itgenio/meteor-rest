@@ -10,6 +10,13 @@ JsonRoutes = {};
 
 WebApp.connectHandlers.use(bodyParser.urlencoded({limit: '50mb',extended:false})); //Override default request size
 WebApp.connectHandlers.use(bodyParser.json({limit: '50mb'})); //Override default request size
+// Preserve the existing request.body contract for requests without a parsed body.
+WebApp.connectHandlers.use(function (req, res, next) {
+  if (typeof req.body === 'undefined') {
+    req.body = {};
+  }
+  next();
+});
 WebApp.connectHandlers.use(query());
 
 // Handler for adding middleware before an endpoint (JsonRoutes.middleWare
